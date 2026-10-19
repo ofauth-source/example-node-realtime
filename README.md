@@ -27,11 +27,11 @@ Expect `Connected`. When the account receives a `realtime.inbox_counts.updated` 
 {"linkedAccountId":"conn_example123","environment":"live","receivedAt":"2026-04-23T14:30:15.143Z","chatMessagesCount":1,"countPriorityChat":2,"unreadTips":3}
 ```
 
-These are the event's counter values, not increments to add for every delivery. The listener ignores other event types, another account's messages, malformed JSON, and duplicate or older `order` values. A successful connection alone does not prove that a matching event has occurred. Use a designated Test account to check a real inbox-count change. Press Ctrl+C to stop.
+These are the event's counter values, not increments to add for every delivery. The listener ignores other event types, another account's messages, malformed JSON, and duplicate or older `order` values. An open WebSocket alone does not prove that a matching event has occurred. Use a designated Test account to check a real inbox-count change. Press Ctrl+C to stop.
 
-## Recover a connection
+## Recover a WebSocket connection
 
-The listener makes at most five connection attempts per run, with waits of approximately 1, 2, 4, and 8 seconds. It retries failed connections and `503` upgrades. It stops on other rejected upgrades, a normal close (`1000`), or authority loss (`4003`). Recover expired authorization or account access before restarting after access changes. There is no automatic token refresh in this example.
+The listener makes at most five WebSocket connection attempts per run, with waits of approximately 1, 2, 4, and 8 seconds. It retries failed WebSocket connections and `503` upgrades. It stops on other rejected upgrades, a normal close (`1000`), or authority loss (`4003`). Recover expired authorization or account access before restarting after access changes. There is no automatic token refresh in this example.
 
 The WebSocket envelope uses `receivedAt`. Lifecycle events arrive through webhooks. Do not assume missed activity replays after reconnecting; reconcile current resources after a disconnect.
 

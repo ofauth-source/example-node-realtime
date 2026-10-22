@@ -7,7 +7,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "start": "node --env-file=.env listen.js"
+    "start": "node init && node --env-file=.env listen.js"
   },
   "dependencies": {
     "ws": "8.22.0"
